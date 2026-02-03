@@ -5,15 +5,21 @@ function App() {
   const [data, setData] = useState(0);
 
   // Runs ONLY when count changes
+  // useEffect(() => {
+  //   console.log("Counter count:", count);
+  //   callingfunc();
+  // }, [count]);
+
+  // Runs only one time in mount phase -
   useEffect(() => {
     console.log("Counter count:", count);
     callingfunc();
-  }, [count]);
+  }, []);
 
   // Runs ONLY when data changes
-  useEffect(() => {
-    console.log("Counter data:", data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("Counter data:", data);
+  // }, [data]);
 
   function callingfunc() {
     console.log("I am calling (count changed)");
