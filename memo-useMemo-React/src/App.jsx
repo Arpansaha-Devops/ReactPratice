@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
 
-function App() {
+
+import { useState, useMemo } from "react";
+
+export default function App() {
   const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(5);
 
-  function handleClick() {
-    setCount(prev => prev + 1);
-  }
+  const double = useMemo(() => {
+    console.log("Calculating...");
+    return number * 2;
+  }, [number]);
 
   return (
     <>
-      <MemoizedChild  />
-      <button onClick={handleClick}>Count: {count}</button>
+      <p>Double: {double}</p>
+
+      <button onClick={() => setCount(count + 1)}>
+        Re-render ({count})
+      </button>
+
+      <button onClick={() => setNumber(number + 1)}>
+        Change Number
+      </button>
     </>
   );
 }
 
-export default App;
+// function Child() {
+//   console.log("Child component rendered");
 
-function Child() {
-  console.log("Child component rendered");
+//   return (
+//     <>
+//       <div>I am child component</div>
+//     </>
+//   );
+// }
 
-  return (
-    <>
-      <div>I am child component</div>
-    </>
-  );
-}
-
-const MemoizedChild = React.memo(Child); // It prevents the child component from re-rendering if its props have not changed.
+// const MemoizedChild = React.memo(Child); // It prevents the child component from re-rendering if its props have not changed.
