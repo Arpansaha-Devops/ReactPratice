@@ -44,7 +44,7 @@ function App() {
               ...(activeTab === key ? styles.buttonActive : {}),
             }}
           >
-            {tab.label}
+            {tab.label}  // it is the activeTab lables for switching the component for setState .
           </button>
         ))}
       </div>
